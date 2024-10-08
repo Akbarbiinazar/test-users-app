@@ -8,12 +8,10 @@ const mainLayoutMenuItems = [
   {
     route: ROUTES.appRoute,
     title: "Главная",
- 
   },
 ];
 
 export const MainLayout = () => {
-
   return (
     <section>
       <Header />
@@ -21,7 +19,6 @@ export const MainLayout = () => {
       <main>
         <div>
           <Suspense fallback={<Loader />}>
-            {/* <Breadcrumbs /> */}
             <Outlet />
           </Suspense>
         </div>
