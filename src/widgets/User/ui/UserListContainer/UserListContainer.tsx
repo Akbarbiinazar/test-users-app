@@ -3,10 +3,10 @@ import { useGetUsersQuery } from "@/entities/user/api/usersApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setSortOption } from "../../slices/slice";
 import { Button } from "@/shared/ui/Button";
-import { debounce } from "@/shared/lib/utils";
 import { CreateUserModal } from "../CreateUserModal";
 import { UsersList } from "../UsersList/UsersList";
 import { SortUserOptions } from "@/features/user/sortUser";
+import { useDebounce } from "@/shared/lib/hooks";
 
 export const UsersListContainer: React.FC = () => {
   const { data: users, isLoading, error } = useGetUsersQuery();
@@ -18,12 +18,9 @@ export const UsersListContainer: React.FC = () => {
     (state: any) => state.users
   );
 
-  const handleDisclosureModal = (isOpened: boolean) => setIsModalOpen(isOpened);
+  const debouncedSearch = useDebounce((value: string) => setSearchTerm(value), 300)
 
-  const debouncedSearch = useMemo(
-    () => debounce((value: string) => setSearchTerm(value), 300),
-    []
-  );
+  const handleDisclosureModal = (isOpened: boolean) => setIsModalOpen(isOpened);
 
   const handleSortChange = (option: "nameAsc" | "nameDesc") =>
     dispatch(setSortOption(option));

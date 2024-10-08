@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { User } from "@/entities/user/model/types/users"; // Adjust the import path
+import { User } from "@/entities/user/model/types/users"; 
 import { useEditUserMutation } from "@/entities/user/api/usersApi";
 import { toast } from "react-toastify";
 
@@ -35,11 +35,11 @@ export const useEditUserFeature = (): UseEditUserFeature => {
       const newUser = { ...userToEdit, ...updatedUser };
 
       await editUser(newUser).unwrap();
-      toast.success("User updated successfully!"); // Show success message
+      toast.success("User updated successfully!");
       closeModal();
     } catch (error) {
       const errorMessage =  (error as any)?.data?.message  || "An error occurred while updating the user.";
-      toast.error(errorMessage); // Show error message
+      toast.error(errorMessage);
       console.error("Error updating user: ", error);
     }
   };

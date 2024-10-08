@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/shared/lib/tailwind-merge"; 
+import { cn } from "@/shared/lib/tailwind-merge";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
@@ -16,7 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       {...props}
       className={cn(
-        "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-gray-500",
+        "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-60",
         props.disabled && "cursor-not-allowed",
         className
       )}
